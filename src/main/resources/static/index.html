@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hello WebSocket</title>
+<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/main.css" rel="stylesheet">
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script src="/app.js"></script>
+<script src="/googlemap.js"></script>
+
+
+</head>
+<body>
+
+<input id="origin-input" class="controls" type="text"
+        placeholder="Điểm Đi">
+
+    <input id="destination-input" class="controls" type="text"
+        placeholder="Điểm Đến">
+
+    <div id="mode-selector" class="controls">
+      <input type="radio" name="type" id="changemode-walking" checked="checked">
+      <label for="changemode-walking">Đi bộ</label>
+
+      <input type="radio" name="type" id="changemode-transit">
+      <label for="changemode-transit">Phương Tiện Công Cộng</label>
+
+      <input type="radio" name="type" id="changemode-driving">
+      <label for="changemode-driving">Lái xe</label>
+    </div>
+
+<div id="map2"></div> 
+   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDocriikw7ABIY0HIMnZm04JRsBU40HzlM&libraries=places&callback=initMap"></script>
+    <div id="right-panel">
+      <p>Total Distance: <span id="total"></span></p>
+    </div>
+
+	<noscript>
+		<h2 style="color: #ff0000">Seems your browser doesn't support
+			Javascript! Websocket relies on Javascript being enabled. Please
+			enable Javascript and reload this page!</h2>
+	</noscript>
+	
+	<div id="main-content" class="container">
+
+		<div class="row">
+
+			<div class="col-md-6">
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="connect">Tắt bật tự động kết nối socket</label>
+						<button id="connect" class="btn btn-default" type="submit">Kết nối phòng chat</button>
+						<button id="disconnect" class="btn btn-default" type="submit"
+							disabled="disabled">hủy kết nối</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-6">
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="name">Nhập tên</label> 
+						<input type="text" id="name"
+							class="form-control" placeholder="nhập tên"></br>
+							<label for="message">Nhập nội dung chat</label> 
+							<input type="text" id="message" class="form-control" placeholder="Gửi lời nhắn">
+							<label for="fileinput"></label> 
+							<input type="file" id="fileinput" accept="image/*" onchange="previewImage()" />
+							<div ><span style=" display: inline-block; "><img height="150px",width="150px" id="imgpreview" src="" alt="xem trước ảnh"/></span></div>
+							
+						
+					</div>
+
+					<button id="send" class="btn btn-default" type="submit">Send message</button>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<table id="conversation" class="table table-striped">
+					<thead>
+						<tr>
+							<th>Nội dung chat</th>
+						</tr>
+					</thead>
+					<tbody id="greetings" style='height:50px;width:317px'>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		</form>
+	</div>
+</body>
+</html>

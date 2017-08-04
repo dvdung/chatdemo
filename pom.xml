@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.springframework</groupId>
-	<artifactId>herokutestdemo</artifactId>
+	<artifactId>chatdemo</artifactId>
 	<version>0.1.0</version>
-	<name>herokutestdemo</name>
+	<name>chatdemo</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
